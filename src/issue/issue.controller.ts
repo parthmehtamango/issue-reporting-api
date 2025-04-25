@@ -17,7 +17,7 @@ export class IssueController {
   @ApiOperation({ summary: 'Create a new issue' })
   @ApiResponse({ status: 201, description: 'The issue has been successfully created.' })
   create(@Body() dto: CreateIssueDto, @Request() req) {
-    return this.issueService.create(dto, req.name);
+    return this.issueService.create(dto, req);
   }
 
   @Public()
@@ -34,6 +34,6 @@ export class IssueController {
   @ApiOperation({ summary: 'Update an existing issue' })
   @ApiResponse({ status: 200, description: 'The issue has been successfully updated.' })
   update(@Param('id') id: string, @Body() dto: UpdateIssueDto,@Request() req) {
-    return this.issueService.update(+id, dto,  req.name);
+    return this.issueService.update(+id, dto,  req);
   }
 }
