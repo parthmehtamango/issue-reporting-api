@@ -5,18 +5,23 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { FindUsersDto } from './dto/find-users.dto';
 import { CurrentUser } from 'src/auth/dto/decorators/current-user.decorator';
 import { User } from './entities/user.entity';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get()
-  findMany(@Query() query: FindUsersDto) {
-    return this.usersService.findMany(query);
-  }
+  // @Get()
+  // @ApiOperation({ summary: 'get all users' })
+  // @ApiResponse({ status: 201, description: '' })
+  // findMany(@Query() query: FindUsersDto) {
+  //   return this.usersService.findMany(query);
+  // }
 
-  @Get('profile')
-  getProfile(@CurrentUser() user: User) {
-    return user;
-  }
+  // @Get('profile')
+  // @ApiOperation({ summary: 'find particular user' })
+  // @ApiResponse({ status: 201, description: '' })
+  // getProfile(@CurrentUser() user: User) {
+  //   return user;
+  // }
 }
